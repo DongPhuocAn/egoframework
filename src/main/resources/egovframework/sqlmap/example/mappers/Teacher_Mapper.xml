@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.TeacherMapper">
+
+	<resultMap id="teacher" type="egovframework.example.sample.VO.TeacherVO">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="description" column="description"/>
+		<result property="className" column="class_name"/>
+	</resultMap>
+
+	<insert id="insertTeacher" parameterType="TeacherVO">
+
+			INSERT INTO TEACHER
+				( ID
+				  , NAME
+				  , DESCRIPTION
+				  , CLASS_NAME )
+			VALUES ( #{id}
+				  , #{name}
+				  , #{description}
+				  , #{className} )
+
+	</insert>
+
+	<update id="updateTeacher">
+
+			UPDATE TEACHER
+			SET ID=#{id}
+				, NAME=#{name}
+				, DESCRIPTION=#{description}
+				WHERE ID=#{id}
+
+	</update>
+
+	<delete id="deleteTeacher">
+
+			DELETE FROM TEACHER
+			WHERE ID=#{id}
+
+	</delete>
+
+	<select id="selectTeacher" resultMap="teacher">
+
+			SELECT
+				ID, NAME, DESCRIPTION, CLASS_NAME
+			FROM TEACHER
+			WHERE ID=#{id}
+
+	</select>
+
+	<select id="selectTeacherList" parameterType="searchTeacherVO" resultType="egovMap">
+
+			SELECT
+				ID, NAME, DESCRIPTION, CLASS_NAME
+			FROM TEACHER
+			WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+		        AND	NAME LIKE CONCAT('%', #{searchKeyword} ,'%')
+			</if>
+			ORDER BY ID ASC
+			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+	</select>
+
+	<select id="selectTeacherListTotCnt" parameterType="searchTeacherVO" resultType="int">
+
+			SELECT COUNT(*) totcnt
+			FROM TEACHER
+			WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+		        AND	NAME LIKE CONCAT('%', #{searchKeyword} ,'%')
+			</if>
+	</select>
+
+</mapper>

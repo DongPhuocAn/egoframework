@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.sample.service.impl.ShopMapper">
+
+	<resultMap id="customers" type="egovframework.example.sample.VO.CustomersVO">
+		<result property="customerNumber" column="customerNumber"/>
+		<result property="customerName" column="customerName"/>
+		<result property="contactLastName" column="contactLastName"/>
+		<result property="contactFirtName" column="contactFirtName"/>
+		<result property="phone" column="phone"/>
+		<result property="addressLine1" column="addressLine1"/>
+		<result property="addressLine2" column="addressLine2"/>
+		<result property="city" column="city"/>
+		<result property="state" column="state"/>
+		<result property="postalCode" column="postalCode"/>
+		<result property="country" column="country"/>
+		<result property="salesRepEmployeeNumber" column="salesRepEmployeeNumber"/>
+		<result property="employeeNumber" column="employeeNumber"/>
+		<result property="creditLimit" column="creditLimit"/>
+	</resultMap>
+
+	<resultMap id="employees" type="egovframework.example.sample.VO.EmployeesVO">
+		<result property="employeeNumber" column="employeeNumber"/>
+		<result property="lastName" column="lastName"/>
+		<result property="firstName" column="firstName"/>
+		<result property="extension" column="extension"/>
+		<result property="email" column="email"/>
+		<result property="officeCode" column="officeCode"/>
+		<result property="reportsTo" column="reportsTo"/>
+		<result property="jobTitle" column="jobTitle"/>
+	</resultMap>
+	
+	<resultMap id="offices" type="egovframework.example.sample.VO.OfficesVO">
+		<result property="officeCode" column="officeCode"/>
+		<result property="city" column="city"/>
+		<result property="phone" column="phone"/>
+		<result property="addressLine1" column="addressLine1"/>
+		<result property="addressLine2" column="addressLine2"/>
+		<result property="state" column="state"/>
+		<result property="postalCode" column="postalCode"/>
+		<result property="country" column="country"/>
+		<result property="territory" column="territory"/>
+	</resultMap>
+	
+	<resultMap id="orderdetails" type="egovframework.example.sample.VO.OrderDetailsVO">
+		<result property="orderNumber" column="orderNumber"/>
+		<result property="productCode" column="productCode"/>
+		<result property="quantityOrdered" column="quantityOrdered"/>
+		<result property="priceEach" column="priceEach"/>
+		<result property="orderLineNumber" column="orderLineNumber"/>
+	</resultMap>
+
+	<resultMap id="orders" type="egovframework.example.sample.VO.OrdersVO">
+		<result property="orderNumber" column="orderNumber"/>
+		<result property="orderDate" column="orderDate"/>
+		<result property="requiredDate" column="requiredDate"/>
+		<result property="status" column="status"/>
+		<result property="comments" column="comments"/>
+		<result property="customerNumber" column="customerNumber"/>
+	</resultMap>
+	
+	<resultMap id="payments" type="egovframework.example.sample.VO.PaymentsVO">
+		<result property="customerNumber" column="customerNumber"/>
+		<result property="checkNumber" column="checkNumber"/>
+		<result property="paymentDate" column="paymentDate"/>
+		<result property="amount" column="amount"/>
+	</resultMap>
+	
+	<resultMap id="productlines" type="egovframework.example.sample.VO.ProductlinesVO">
+		<result property="productLine" column="productLine"/>
+		<result property="textDescription" column="textDescription"/>
+		<result property="htmlDescription" column="htmlDescription"/>
+		<result property="image" column="image"/>
+	</resultMap>
+	
+	<resultMap id="products" type="egovframework.example.sample.VO.ProductsVO">
+		<result property="productCode" column="productCode"/>
+		<result property="productName" column="productName"/>
+		<result property="productLine" column="productLine"/>
+		<result property="productScale" column="productScale"/>
+		<result property="productVendor" column="productVendor"/>
+		<result property="productDescription" column="productDescription"/>
+		<result property="quantityInStock" column="quantityInStock"/>
+		<result property="buyPrice" column="buyPrice"/>
+		<result property="MSRP" column="MSRP"/>
+	</resultMap>
+	
+	
+	
+	<select id="selectProductLineList" resultType="egovMap">
+			SELECT
+				productLine, textDescription, htmlDescription, image
+			FROM PRODUCTLINES
+			<!-- WHERE 1=1
+			<if test="searchKeyword != null and searchKeyword != ''">
+		        AND	product_line LIKE CONCAT('%', #{searchKeyword} ,'%')
+			</if>
+			ORDER BY productLine ASC
+			LIMIT #{recordCountPerPage} OFFSET #{firstIndex} -->
+	</select>
+</mapper>

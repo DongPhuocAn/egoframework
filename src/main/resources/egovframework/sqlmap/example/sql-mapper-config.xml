@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+    
+    	<typeAlias alias="searchProductLineVO" type="egovframework.example.sample.VO.ShopDefaultVO"/>
+    	<typeAlias alias="productLineVO" type="egovframework.example.sample.VO.ProductlinesVO"/>
+		
+		<typeAlias alias="searchTeacherVO" type="egovframework.example.sample.VO.TeacherDefaultVO"/> 
+		<typeAlias alias="teacherVO" type="egovframework.example.sample.VO.TeacherVO"/>
+		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+		
+		<typeAlias alias="searchVO" type="egovframework.example.sample.VO.SampleDefaultVO"/> 
+		<typeAlias alias="sampleVO" type="egovframework.example.sample.VO.SampleVO"/>
+    </typeAliases>
+</configuration>
